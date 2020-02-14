@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{id === 'nuevo' ? 'Crear' : 'Editar'}} portafolio</h4>
+                <form ngNativeValidate #formulario="ngForm" (ngSubmit)="crearPortafolio(formulario)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Titulo</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="titulo" [(ngModel)]="portafolio.titulo"
+                            [placeholder]="'Ingrese el titulo aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Misión</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="mision"
+                            [(ngModel)]="portafolio.mision" [placeholder]="'Ingrese la misión aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Visión</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="vision" [(ngModel)]="portafolio.vision"
+                            [placeholder]="'Ingrese la visión aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Centro</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="centro" [(ngModel)]="portafolio.centro"
+                            [placeholder]="'Ingrese la información del centro aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Requisitos</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="requisitos" [(ngModel)]="portafolio.requisitos"
+                            [placeholder]="'Ingrese los requisitos aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Incluye</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="incluye" [(ngModel)]="portafolio.incluye"
+                            [placeholder]="'Ingrese lo que se incluye aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i>
+                        Guardar</button>
+                    <a routerLink="/administracion/portafolio" class="btn btn-inverse waves-effect waves-light m-r-10">
+                        <i class="fa fa-times"></i>
+                        Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Imagen del portafolio</h4>
+                <img *ngIf="!imagenTemporal" [src]="portafolio.imagen| imagen:'portafolios'" class="w150">
+                <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150">
+                <input style="font-family: 'Times New Roman', Times, serif;" (change)="seleccionarImagen($event.target.files[0])" type="file"/>
+            </div>
+        </div>
+    </div>
+    <!-- <angular-editor [placeholder]="'Enter text here...'"></angular-editor> -->
+</div>

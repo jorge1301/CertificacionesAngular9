@@ -1,0 +1,71 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="buscarInformacion(input.value)" type="text" class="form-control"
+                    placeholder="Buscar Preguntas">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning text-center" *ngIf="cargando">
+    <strong>Cargando</strong>
+    <br>
+    <i class="fa fa-spinner fa-spin"></i>
+    <br>
+    <span>Espere por favor</span>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button [routerLink]="['/administracion/quiz','nuevo']" type="button"
+                        class="btn waves-effect waves-light btn-rounded btn-primary"> <i class="fa fa-plus"></i>
+                        Crear Pregunta
+                    </button>
+                </div>
+                <h3 class="card-title"> Preguntas registradas (<small>{{totalRegistros}}</small>)</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="th-principal">Pregunta</th>
+                            <th class="th-secundario">Opción a</th>
+                            <th class="th-secundario">Opción b</th>
+                            <th class="th-secundario">Opción c</th>
+                            <th class="th-secundario">Opción d</th>
+                            <th class="th-secundario">Respuesta</th>
+                            <th class="th-secundario">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let quiz of listaQuiz">
+                            <td>{{quiz.pregunta}}</td>
+                            <td>{{quiz.opcion1}}</td>
+                            <td>{{quiz.opcion2}}</td>
+                            <td>{{quiz.opcion3}}</td>
+                            <td>{{quiz.opcion4}}</td>
+                            <td>{{quiz.respuesta}}</td>
+                            <td>
+                                <div class="d-flex justify-content-sm-end">
+                                    <button [routerLink]="['/administracion/quiz',quiz._id]"
+                                        class="btn btn-primary mr-1">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button (click)="eliminarInformacion(quiz)" class="btn btn-danger mr-1">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="cambiarDesde(-5)"
+                    class="btn btn-secondary mr-1 matTooltip='Info about the action'">Anteriores</button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary mr-1">Siguientes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<div class="text-center">
+    <ngb-carousel #carousel [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
+        <ng-template ngbSlide>
+            <a target="_blank" rel="nofollow noopener noreferrer">
+                <div class="picsum-img-wrapper">
+                    <img src="../../assets/images/imagen1.jpg" width="100%" height="100%"
+                        alt="Random second slide">
+                </div>
+            </a>
+        </ng-template>
+        <ng-template ngbSlide>
+            <a target="_blank" rel="nofollow noopener noreferrer">
+                <div class="picsum-img-wrapper">
+                    <img src="../../assets/images/imagen2.jpg" width="100%" height="100%"
+                        style="background-size:contain;" alt="Random second slide">
+                </div>
+            </a>
+        </ng-template>
+        <ng-template ngbSlide>
+            <a target="_blank" rel="nofollow noopener noreferrer">
+                <div class="picsum-img-wrapper">
+                    <img src="../../assets/images/imagen3.jpg" width="100%" height="100%"
+                        alt="Random third slide">
+                </div>
+            </a>
+        </ng-template>
+    </ngb-carousel>
+</div>
+<div class="container-fluid" style="background-color:#F5F5F5;">
+    <div class="animated fadeIn fast">
+        <router-outlet></router-outlet>
+    </div>
+</div>

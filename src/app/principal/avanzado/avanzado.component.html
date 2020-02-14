@@ -1,0 +1,48 @@
+<div class="container marketing card" *ngFor="let avanzado of avanzadoLista">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <span [innerHTML]="avanzado.titulo | domSeguro"></span>
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-5">
+            <img class="img-fluid mx-auto" width="500" height="500" [src]="avanzado.imagen | imagen: 'avanzados'">
+        </div>
+        <div class="col-md-7">
+            <span [innerHTML]="avanzado.descripcion | domSeguro"></span>
+
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-12">
+            <span [innerHTML]="avanzado.direccion | domSeguro"></span>
+            <span [innerHTML]="avanzado.fecha | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="avanzado.requisitos | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="avanzado.proposito | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="avanzado.metodologia | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="avanzado.valor | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="avanzado.incluye | domSeguro"></span>
+        </div>
+        <div class="col-md-12" *ngFor="let item of avanzado.programacion">
+            <span [innerHTML]="item.dia | domSeguro"></span>
+            <span [innerHTML]="item.informacion | domSeguro"></span>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+</div><!-- /.container -->

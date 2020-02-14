@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{id === 'nuevo' ? 'Crear' : 'Editar'}} preguntas</h4>
+                <form ngNativeValidate #formulario="ngForm" (ngSubmit)="crearQuiz(formulario)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Pregunta</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i style="color: blue;" class="ti-help"></i></div>
+                            <textarea style="text-align: justify;" rows="5" name="pregunta" [(ngModel)]="quiz.pregunta"
+                                type="text" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputuname">Literal a</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i style="color: blue;">a</i></div>
+                                <input name="opcion1" [(ngModel)]="quiz.opcion1" type="text" class="form-control"
+                                    placeholder="Primera opción" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputuname">Literal b</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i style="color: blue;">b</i></div>
+                                <input name="opcion2" [(ngModel)]="quiz.opcion2" type="text" class="form-control"
+                                    placeholder="Segunda opción" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputuname">Literal c</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i style="color: blue;">c</i></div>
+                                <input name="opcion3" [(ngModel)]="quiz.opcion3" type="text" class="form-control"
+                                    placeholder="Tercera opción" required>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputuname">Literal d</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i style="color: blue;">d</i></div>
+                                <input name="opcion4" [(ngModel)]="quiz.opcion4" type="text" class="form-control"
+                                    placeholder="Cuarta opción" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Respuesta</label>
+                        <div>
+                            <select [(ngModel)]="literal" name="literal" class="custom-select" required>
+                                <option value="">Seleccione el literal</option>
+                                <option value="a">a</option>
+                                <option value="b">b</option>
+                                <option value="c">c</option>
+                                <option value="d">d</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar</button>
+                        <a routerLink="/administracion/quiz" class="btn btn-inverse waves-effect waves-light m-r-10">
+                            <i class="fa fa-times"></i>
+                            Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

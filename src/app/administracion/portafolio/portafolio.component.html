@@ -1,0 +1,66 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="buscarPortafolio(input.value)" type="text" class="form-control" placeholder="Buscar portafolio">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning text-center" *ngIf="cargando">
+    <strong>Cargando</strong>
+    <br>
+    <i class="fa fa-spinner fa-spin"></i>
+    <br>
+    <span>Espere por favor</span>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button [routerLink]="['/administracion/portafolio','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary"> <i class="fa fa-plus"></i>
+                        Crear Portafolio
+                    </button>
+                </div>
+                <h3 class="card-title"> Portafolio registrado (<small>{{totalRegistros}}</small>)</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Titulo</th>
+                            <th>Mision</th>
+                            <th>Vision</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let portafolio of portafolios">
+                            <td class="w70">
+                                <img [src]="portafolio.imagen | imagen: 'portafolios'" class="img-50 img-circle">
+                            </td>
+                            <td><div [innerHTML]="portafolio.titulo | domSeguro"></div></td>
+                            <td><div [innerHTML]="portafolio.mision | domSeguro"></div></td>
+                            <td><div [innerHTML]="portafolio.vision | domSeguro"></div></td>
+                            <td>
+                                <div class="d-flex justify-content-sm-end">
+                                    <button [routerLink]="['/administracion/portafolio',portafolio._id]"  class="btn btn-primary mr-1">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button (click)="eliminarPortafolio(portafolio)" class="btn btn-danger mr-1">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary mr-1 matTooltip='Info about the action'">Anteriores</button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary mr-1">Siguientes</button>
+            </div>
+        </div>
+    </div>
+</div>

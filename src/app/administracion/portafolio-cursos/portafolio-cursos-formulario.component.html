@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{id === 'nuevo' ? 'Crear' : 'Editar'}} curso en el portafolio</h4>
+                <form ngNativeValidate #formulario="ngForm" (ngSubmit)="crearPortafolioCurso(formulario)"
+                    class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Curso</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="curso"
+                            [(ngModel)]="portafolioCurso.curso" [placeholder]="'Ingrese los requisitos del curso aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Información</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="informacion"
+                            [(ngModel)]="portafolioCurso.informacion" [placeholder]="'Ingrese lo que se incluye en el curso aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i>
+                        Guardar</button>
+                    <a routerLink="/administracion/portafolio-cursos" class="btn btn-inverse waves-effect waves-light m-r-10">
+                        <i class="fa fa-times"></i>
+                        Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Imagen del curso</h4>
+                <img *ngIf="!imagenTemporal" [src]="portafolioCurso.imagen| imagen:'portafolioCursos'" class="w150">
+                <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150">
+                <input (change)="seleccionarImagen($event.target.files[0])" type="file" />
+            </div>
+        </div>
+    </div>
+</div>

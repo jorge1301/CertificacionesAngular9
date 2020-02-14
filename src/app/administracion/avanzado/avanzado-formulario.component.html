@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{id === 'nuevo' ? 'Crear' : 'Editar'}} curso avanzado</h4>
+                <form ngNativeValidate #formulario="ngForm" (ngSubmit)="crearCursoAvanzado(formulario)"
+                    class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Titulo</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="titulo"
+                            [(ngModel)]="avanzado.titulo" [placeholder]="'Ingrese el titulo aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Direccion</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="direccion"
+                            [(ngModel)]="avanzado.direccion" [placeholder]="'Ingrese la dirección aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Fecha</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="fecha"
+                            [(ngModel)]="avanzado.fecha" [placeholder]="'Ingrese la fecha aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Descripción</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="descripcion"
+                            [(ngModel)]="avanzado.descripcion" [placeholder]="'Ingrese la descripción aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Requisitos</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="requisitos"
+                            [(ngModel)]="avanzado.requisitos" [placeholder]="'Ingrese los requisitos aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Proposito</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="proposito"
+                            [(ngModel)]="avanzado.proposito" [placeholder]="'Ingrese el proposito aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Metodología</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="metodologia" [(ngModel)]="avanzado.metodologia"
+                            [placeholder]="'Ingrese la metodología aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Valor</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="valor" [(ngModel)]="avanzado.valor"
+                            [placeholder]="'Ingrese el valor aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Incluye</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="incluye" [(ngModel)]="avanzado.incluye"
+                            [placeholder]="'Ingrese lo que se incluye aqui....'" [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i>
+                        Guardar</button>
+                    <a routerLink="/administracion/avanzado" class="btn btn-inverse waves-effect waves-light m-r-10">
+                        <i class="fa fa-times"></i>
+                        Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 col-md-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Imagen del curso avanzado</h4>
+                <img *ngIf="!imagenTemporal" [src]="avanzado.imagen| imagen:'avanzados'" class="w150">
+                <img *ngIf="imagenTemporal" [src]="imagenTemporal" class="w150">
+                <input style="font-family: 'Times New Roman', Times, serif;"
+                    (change)="seleccionarImagen($event.target.files[0])" type="file" />
+            </div>
+        </div>
+    </div>
+</div>

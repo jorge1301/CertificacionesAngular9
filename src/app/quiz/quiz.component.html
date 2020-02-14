@@ -1,0 +1,66 @@
+<nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark bg-faded justify-content-between" id="menu">
+    <a class="navbar-brand">Quiz</a>
+    <form class="form-inline">
+        <a class="btn btn-outline-success my-2 my-sm-0" (click)="salir()" type="submit">Salir</a>
+    </form>
+</nav>
+
+<div class="container quiz-container">
+    <div *ngIf="listaQuiz && progresoQuiz < 20">
+        <div class="card text-white bg-info text-center">
+            <div class="card-header" style="text-align: justify; font-weight: bold;">
+                {{progresoQuiz + 1}}. {{listaQuiz[progresoQuiz] === undefined ? '' : listaQuiz[progresoQuiz].pregunta}} 
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-action pointer" style="color: black;" (click)="contestar('a', listaQuiz[progresoQuiz])">{{listaQuiz[progresoQuiz] === undefined ? '' : listaQuiz[progresoQuiz].opcion1}}</li>
+                    <li class="list-group-item list-group-item-action pointer" style="color: black;" (click)="contestar('b', listaQuiz[progresoQuiz])">{{listaQuiz[progresoQuiz] === undefined ? '' : listaQuiz[progresoQuiz].opcion2}}</li>
+                    <li class="list-group-item list-group-item-action pointer" style="color: black;" (click)="contestar('c', listaQuiz[progresoQuiz])">{{listaQuiz[progresoQuiz] === undefined ? '' : listaQuiz[progresoQuiz].opcion3}}</li>
+                    <li class="list-group-item list-group-item-action pointer" style="color: black;" (click)="contestar('d', listaQuiz[progresoQuiz])">{{listaQuiz[progresoQuiz] === undefined ? '' : listaQuiz[progresoQuiz].opcion4}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="progresoQuiz === 20">
+            <div class="card text-white bg-info text-center">
+                <div class="card-header" style="text-align: center;">
+                   <h1 style="color: white;">Examen Completado</h1>
+                </div>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="../../assets/images/trophy.png" style="width: 250px;height : 250px;">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h2 style="color: black; font-weight: bold; font: 40px;">{{aciertosEstudiante}}/20</h2>
+                                <h4 style="color: black; font-weight: bold; font: 22px; text-transform: capitalize;">alumno: {{alumno.nombre}}</h4>
+                            </div>
+                        </div>
+                    </div>
+            
+            <div class="card-footer text-muted">
+                <a class="btn btn-outline-info" style="color: white;" (click)="verCorreccion()" type="submit">Corrección</a>
+            </div>
+            </div>
+    </div>
+
+    <div *ngIf="correccion">
+        <div *ngFor="let resultado of opciones; let i= index">
+        <div class="card text-white bg-info text-center">
+            <div class="card-header" style="text-align: justify; font-weight: bold;">
+            {{i + 1}}. {{resultado.pregunta}}
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let respondido of resultado.Opciones; let j= index" class="list-group-item list-group-item-action" style="color: black;">
+                        {{respondido}}
+                        <i style="color: green;" *ngIf="resultado.respuesta === j" class="fa fa-check">Correcta</i>
+                        <i style="color: red;" *ngIf="resultado.estudianteRespuesta === j && resultado.respuesta !== j" class="fa fa-close">Incorrecta</i>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.container -->

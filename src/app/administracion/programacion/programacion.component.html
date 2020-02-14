@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Crear programación de los cursos</h4>
+                <form ngNativeValidate #formulario="ngForm" (ngSubmit)="crearProgramacion()"
+                    class="form p-t-20">
+                    <div class="row">
+                        <div class="card col-lg-5">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input (click)="cursoAvanzadoListado()" class="form-check-input" type="radio"
+                                        name="exampleRadios" id="exampleRadios2" value="option2" checked>
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Curso Avanzado
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input (click)="cursoInternacionalListado()" class="form-check-input" type="radio"
+                                        name="exampleRadios" id="exampleRadios3" value="option3">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Curso Internacional
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="listaInternacional !== null" class="card col-lg-7">
+                            <select [(ngModel)]= "cursoInternacional" name="cursoInternacional"  (click)="enviarModeloInternacional(cursoInternacional)"  class="custom-select" required>
+                                <option value="">Seleccione el curso</option>
+                                <option *ngFor="let dato of listaInternacional" [value]="dato._id" [innerHTML]="dato.titulo | domSeguro"></option>
+                            </select>
+                        </div>
+                        <div *ngIf="listaAvanzado !== null" class="card col-lg-7">
+                            <select [(ngModel)]="cursoAvanzado" name="cursoAvanzado" (click)="enviarModeloAvanzado(cursoAvanzado)" class="custom-select" required>
+                                <option value="">Seleccione el curso</option>
+                                <option *ngFor="let dato of listaAvanzado" [value]="dato._id" [innerHTML]="dato.titulo | domSeguro"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-right">
+                            <button type="button" (click)="nuevaFila(formulario)"
+                                class="btn waves-effect waves-light btn-rounded btn-primary"> <i class="fa fa-plus"></i>
+                                Añadir programación
+                            </button>
+                        </div>
+                        <label for="exampleInputuname">Día</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="dia" [(ngModel)]="dia"
+                            [placeholder]="'Ingrese los requisitos del curso aqui....'" [spellcheck]="true" required>
+                        </angular-editor>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Información</label>
+                        <angular-editor ngNativeValidate [config]="configuraciones" name="informacion"
+                            [(ngModel)]="informacion" [placeholder]="'Ingrese lo que se incluye en el curso aqui....'"
+                            [spellcheck]="true" required></angular-editor>
+                    </div>
+                    <div class="text-right">
+                        <button (click)="onRemoveSelected(cursoElegido)" type="button"
+                            class="btn waves-effect waves-light btn-rounded btn-primary"> <i class="fa fa-minus"></i>
+                            Eliminar fila
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-balham" [rowData]="rowData"
+                            [columnDefs]="columnDefs" [gridOptions]="gridOpciones" (gridReady)="onGridReady($event)"
+                            [frameworkComponents]="frameworkComponents"></ag-grid-angular>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

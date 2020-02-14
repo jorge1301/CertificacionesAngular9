@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{id === 'nuevo' ? 'Crear' : 'Editar'}} alumno</h4>
+                <form ngNativeValidate #formulario="ngForm" (ngSubmit)="crearAlumno(formulario)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Cedula</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-id-badge"></i></div>
+                            <input name="cedula" [(ngModel)]="alumno.cedula" type="text" class="form-control"
+                                placeholder="Cedula" required [disabled]="condicion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input name="nombre" [(ngModel)]="alumno.nombre" type="text" class="form-control"
+                                placeholder="Nombre" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputuname">Email</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input name="email" [(ngModel)]="alumno.email" type="email" class="form-control"
+                                placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <select [(ngModel)]="quiz" name="quiz" class="custom-select" required>
+                                    <option value="">Seleccione el tipo de examen</option>
+                                    <option value="Guardia">Guardia</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-6">
+                                <input [(ngModel)]="estado" name="estado" id="checkbox-estado" type="checkbox" class="filled-in chk-col-light-blue">
+                                <label for="checkbox-estado"> {{estado===false?'El alumno no puede realizar el examen':'El alumno puede realizar el examen'}} </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar</button>
+                        <a routerLink="/administracion/alumnos" class="btn btn-inverse waves-effect waves-light m-r-10">
+                            <i class="fa fa-times"></i>
+                            Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

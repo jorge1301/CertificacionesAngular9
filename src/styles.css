@@ -1,0 +1,53 @@
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+#themecolors a {
+    cursor: pointer;
+}
+.pointer {
+    cursor: pointer;
+}
+
+.w150 {
+    width: 216px; 
+    height: 216px;
+}
+
+.img-50 {
+    width: 50px;
+}
+
+.w70 {
+    width: 70px;
+}
+
+.img-portafolio {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.th-principal {
+    width: 30%;
+}
+
+.th-secundario {
+    width: 10%;
+}
+
+th {
+    text-align: center;
+}
+
+td { 
+    text-align: justify;
+}
+
+.container-centrar {
+    margin: auto;
+    padding: 10%;
+}
+
+.quiz-container {
+  padding: 5%;
+}

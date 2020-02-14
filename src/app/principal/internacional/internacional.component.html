@@ -1,0 +1,48 @@
+<div class="container marketing card" *ngFor="let internacional of internacionalLista">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <span [innerHTML]="internacional.titulo | domSeguro"></span>
+        </div><!-- /.col-lg-12 -->
+    </div><!-- /.row -->
+    <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-5">
+            <img class="img-fluid mx-auto" width="500" height="500"
+                [src]="internacional.imagen | imagen: 'internacionales'">
+        </div>
+        <div class=" col-md-7">
+            <span [innerHTML]="internacional.descripcion | domSeguro"></span>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-12">
+            <span [innerHTML]="internacional.direccion | domSeguro"></span>
+            <span [innerHTML]="internacional.fecha | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="internacional.requisitos | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="internacional.proposito | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="internacional.metodologia | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="internacional.valor | domSeguro"></span>
+        </div>
+        <div class="col-md-12">
+            <span [innerHTML]="internacional.incluye | domSeguro"></span>
+        </div>
+        <div class="col-md-12" *ngFor="let item of internacional.programacion">
+            <span [innerHTML]="item.dia | domSeguro"></span>
+            <span [innerHTML]="item.informacion | domSeguro"></span>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+</div><!-- /.container -->

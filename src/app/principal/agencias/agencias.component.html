@@ -1,0 +1,10 @@
+<div class="container main-container">
+<div class="card-columns">
+    <div class="card animated fadeIn fast" *ngFor="let agencia of agenciaLista">
+        <img class="card-img-top img-fluid" [src]="agencia.imagen | imagen: 'agencias'" [alt]="agencia.informacion | domSeguro">
+        <div class="card-body">
+            <h4 class="card-title" [innerHTML]="agencia.informacion | domSeguro"></h4>
+        </div>
+    </div>
+</div>
+</div>

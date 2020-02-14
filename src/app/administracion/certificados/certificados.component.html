@@ -1,0 +1,61 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="buscarInformacion(input.value)" type="text" class="form-control"
+                    placeholder="Buscar certificados">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-warning text-center" *ngIf="cargando">
+    <strong>Cargando</strong>
+    <br>
+    <i class="fa fa-spinner fa-spin"></i>
+    <br>
+    <span>Espere por favor</span>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-right">
+                    <button [routerLink]="['/administracion/certificado','nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary"> <i class="fa fa-plus"></i>
+                        Crear Certificado
+                    </button>
+                </div>
+                <h3 class="card-title"> Certificados registrados (<small>{{totalRegistros}}</small>)</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Cedula</th>
+                            <th>Nombre</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let certificados of certificado">
+                            <td>{{certificados.cedula}}</td>
+                            <td>{{certificados.nombre}}</td>
+                            <td>
+                                <div class="d-flex justify-content-sm-end">
+                                    <button [routerLink]="['/administracion/certificado',certificados._id]" class="btn btn-primary mr-1">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button (click)="eliminarInformacion(certificados)" class="btn btn-danger mr-1">
+                                        <i class="fa fa-trash-o"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary mr-1 matTooltip='Info about the action'">Anteriores</button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary mr-1">Siguientes</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="container-centrar">
+        <form ngNativeValidate #formulario="ngForm" (ngSubmit)="login(formulario)">
+            <div class="card text-white bg-info text-center">
+                <div class="card-header">
+                    <h1 style="color: white;">Iniciar Sesión</h1>
+                </div>
+                <div class="card-body bg-light">
+                    <img src="../../assets/images/login.png" style="width:250px;height:250px;" class="offset-s3">
+                    <div class="form-group row justify-content-md-center">
+                        <div class="col col-lg-4">
+                            <input [(ngModel)]="cedula" name="cedula" type="text" class="form-control"
+                                placeholder="Ingrese la cedula" required>
+                        </div>
+                        <div class="col col-lg-4 text-left">
+                            <select [(ngModel)]="quiz" name="quiz" class="custom-select" required>
+                                <option value="">Seleccione el tipo de examen</option>
+                                <option value="Guardia">Guardia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-outline-info" style="color: white;">
+                        <i class="fa fa-graduation-cap"></i>
+                        Ingresar</button>
+                </div>
+            </div>
+        </form>
+    </div>
