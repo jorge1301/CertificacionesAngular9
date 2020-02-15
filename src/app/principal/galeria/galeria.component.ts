@@ -37,10 +37,21 @@ export class GaleriaComponent implements OnInit {
         {
           src: this.pipeImagen.transform(element.imagen, 'galerias'),
           thumb: this.pipeImagen.transform(element.imagen, 'galerias'),
-          description: this.pipeDomSeguro.transform(element.informacion)
+          title: this.pipeDomSeguro.transform(element.informacion)
         }));
     });
     this.galeriaImagenes = this.galeriaImagenesListado;
+  }
+
+  verImagen(posicion) {
+    const myImage = document.createElement('img');
+    fetch(this.galeriaImagenes[posicion].data.src).then((response) => {
+      return response.blob();
+    }).then((myBlob) => {
+      const objectURL = URL.createObjectURL(myBlob);
+      myImage.src = objectURL;
+      window.open(myImage.src);
+    });
   }
 }
 
